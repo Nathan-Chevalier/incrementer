@@ -1,20 +1,33 @@
+import { diceRoller } from "./dice.js";
 import { renderNumber } from "./main.js";
 
 let count = 0;
 
-export const incrementTarget = () => {
-  count++;
+export const rollD4 = () => {
+  count += diceRoller(1, 4);
+};
+
+export const rollD6 = () => {
+  count += diceRoller(1, 6);
 };
 
 export const incrementCount = () => {
   return count;
 };
 
-const intervalIncrement = () => {
+let intervalTime = 0;
+
+export const autoD4 = () => {
   setInterval(() => {
-    incrementTarget();
+    rollD4();
     renderNumber();
+    intervalTime += 1;
   }, 1000);
 };
 
-intervalIncrement();
+export const autoD6 = () => {
+  setInterval(() => {
+    rollD6();
+    renderNumber();
+  }, 1000);
+};
