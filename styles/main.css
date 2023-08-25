@@ -1,0 +1,36 @@
+#gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonContainer,
+#numberContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 30%;
+  margin-top: 25em;
+}
+
+.flying-cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url("../assets/mouseCursor.png"); /* Replace with your cursor image */
+  background-size: cover;
+  pointer-events: none;
+  animation: flyOut 1s linear;
+}
+
+@keyframes flyOut {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(-50% + var(--offsetX, 0px)))
+      translateY(calc(-50% + var(--offsetY, 0px))) scale(1.5);
+    opacity: 0;
+  }
+}
