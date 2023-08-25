@@ -1,27 +1,47 @@
-import { incrementTarget } from "./count.js";
+import { rollD4, autoD4, rollD6, autoD6 } from "./count.js";
 import { renderNumber } from "./main.js";
 
-const incrementClick = (clickEvent) => {
-  if (clickEvent.target.id === "incrementButton") {
-    // // ? Creates a "cursor" div element
-    // const cursor = document.createElement("div");
-    // // ? Adds "flying-cursor" as the class of the cursor
-    // cursor.classList.add("flying-cursor");
-    // // ? Calculates the client's X & Y position, and sets an offset property based on this
-    // cursor.style.setProperty("--offsetX", `${clickEvent.clientX}px`);
-    // cursor.style.setProperty("--offsetY", `${clickEvent.clientY}px`);
-    // // ? Adds the cursor element to the DOM
-    // document.body.appendChild(cursor);
-    // // ? Listens for the animation to end, removes the cursor div
-    // cursor.addEventListener("animationend", function () {
-    //   cursor.remove();
-    // });
-    incrementTarget();
+const d4Click = (clickEvent) => {
+  if (clickEvent.target.id === "d4Button") {
+    rollD4();
     renderNumber();
   }
 };
 
-export const renderClicker = () => {
-  document.addEventListener("click", incrementClick);
-  return `<button class="button__increment" id="incrementButton">Click</button>`;
+export const renderD4 = () => {
+  document.addEventListener("click", d4Click);
+  return `<button class="button__increment" id="d4Button">Roll D4</button>`;
+};
+
+const d6Click = (clickEvent) => {
+  if (clickEvent.target.id === "d6Button") {
+    rollD6();
+    renderNumber();
+  }
+};
+
+export const renderD6 = () => {
+  document.addEventListener("click", d6Click);
+  return `<button id="d6Button">Roll D6</button>`;
+};
+
+const initiateAutoD4 = (clickEvent) => {
+  if (clickEvent.target.id === "autoIncrementButton") {
+    autoD4();
+  }
+};
+export const renderAutoD4 = () => {
+  document.addEventListener("click", initiateAutoD4);
+  return `<button class="button__auto" id="autoIncrementButton">D4 Auto-roller</button>`;
+};
+
+const initiateAutoD6 = (clickEvent) => {
+  if (clickEvent.target.id === "autoD6Button") {
+    autoD6();
+  }
+};
+
+export const renderAutoD6 = (clickEvent) => {
+  document.addEventListener("click", initiateAutoD6);
+  return `<button id="autoD6Button"> D6 Auto-Roller </button>`;
 };
